@@ -2,12 +2,16 @@
     "name": "pxt_henrykit_basic",
     "description": "HenryKit basic extension for MakeCode micro:bit!",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "ws2812b": "github:microsoft/pxt-ws2812b#v0.1.1"
     },
     "files": [
         "henrykit.ts",
         "sonar.ts",
         "probe.ts",
+        "remote.ts",
+        "servo.ts",
+        "strip.ts",
         "README.md"
     ],
     "testFiles": [

@@ -12,8 +12,9 @@ namespace henrykit {
 		constructor() {
 			this._init = false;
 		}
+
 		/**
-		 * Initialize the probe module with the given pin..
+		 * Initialize the probe module with the given pin.
 		 * @param pin analog pin
 		 * @param type probe type
 		 * @param updateMs the update rate of events (default is 300)
@@ -28,7 +29,7 @@ namespace henrykit {
 			updateMs: number=300
 		): void {
 			if (this._init)
-				return
+				return;
 			this._init = true;
 			this._pin = pin;
 			this._type = probeType;
@@ -41,7 +42,7 @@ namespace henrykit {
 		//% block="%this wetness (\\%)"
 		//% blockId=henrykit_probe_wetness
 		wetness(): number {
-			this.init()
+			this.init();
             return Math.map(pins.analogReadPin(this._pin), 0, 1023, 0, 100);
 		}
 
@@ -55,6 +56,7 @@ namespace henrykit {
 		//% subcategory="Probe" weight=70
 		//% block="on %this wetness (\\%)|%inOut|range %min to %max"
 		//% inOut.defl=InOut.GotIn min.defl=30 max.defl=100
+		//% min.min=0 min.max=100 max.min=0 max.max=100
 		//% blockId=henrykit_probe_on_wetness_range
 		onDistanceRange(
 			inOut: InOut=InOut.GotIn,
@@ -62,7 +64,7 @@ namespace henrykit {
 			max: number=100,
 			callback: () => void
 		): void {
-			this.init()
+			this.init();
 			// TBD...
 		}
 	}

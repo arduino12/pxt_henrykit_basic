@@ -15,7 +15,7 @@ namespace henrykit {
 		}
 
 		/**
-		 * Initialize the ultrasonic sonar module with the given pins..
+		 * Initialize the ultrasonic sonar module with the given pins.
 		 * @param trig trigger pin
 		 * @param echo echo pin
 		 * @param maxDistance maximum distance in centimeters (default is 300)
@@ -32,7 +32,7 @@ namespace henrykit {
 			updateMs: number=300
 		): void {
 			if (this._init)
-				return
+				return;
 			this._init = true;
 			this._trig = trig;
 			this._echo = echo;
@@ -70,6 +70,7 @@ namespace henrykit {
 		//% subcategory="Sonar" weight=70
 		//% block="on %this distance (cm)|%inOut|range %min to %max"
 		//% inOut.defl=InOut.GotIn min.defl=0 max.defl=20
+		//% min.min=0 min.max=300 max.min=0 max.max=300
 		//% blockId=henrykit_sonar_on_distance_range
 		onDistanceRange(
 			inOut: InOut=InOut.GotIn,
@@ -77,7 +78,7 @@ namespace henrykit {
 			max: number=20,
 			callback: () => void
 		): void {
-			this.init()
+			this.init();
 			// TBD...
 		}
 	}
