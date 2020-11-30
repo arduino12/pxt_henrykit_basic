@@ -59,12 +59,13 @@ namespace henrykit {
 			const d = Math.idiv(pins.pulseIn(this._echo, PulseValue.High, this._maxCmDistance * UsToCm), UsToCm);
 			return d ? d : this._maxCmDistance;
 		}
-		
+
 		/**
 		 * Do something when the sensor reading match the given range.
-		 * @param inout the key to be checked
-		 * @param action the trigger action
-		 * @param handler body code to run when the event is raised
+		 * @param inOut the key to be checked
+		 * @param min the range start
+		 * @param max the range end
+		 * @param callback code to run when the event is raised
 		 */
 		//% subcategory="Sonar" weight=70
 		//% block="on %this distance (cm)|%inOut|range %min to %max"

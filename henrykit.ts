@@ -11,3 +11,13 @@ const enum InOut {
 	//% block="out of"
 	Out,
 }
+
+/**
+ * Probe types: capacitive(black PCB), resistive(red PCB).
+ */
+const enum ProbeType {
+    //% block="capacitive"
+    Capacitive,
+    //% block="resistive"
+    Resistive,
+}
