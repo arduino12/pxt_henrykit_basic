@@ -1,29 +1,56 @@
+# pxt_henrykit_basic
+HenryKit basic extension for MakeCode micro:bit!
 
-> Open this page at [https://arduino12.github.io/pxt_henrykit_basic/](https://arduino12.github.io/pxt_henrykit_basic/)
-
-## Use as Extension
-
-This repository can be added as an **extension** in MakeCode.
-
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
+## Add Extension
+This repository can be added as an **extension** in MakeCode:
+* open **https://makecode.microbit.org**
 * click on **New Project**
 * click on **Extensions** under the gearwheel menu
 * search for **https://github.com/arduino12/pxt_henrykit_basic** and import
 
-## Edit this project ![Build status badge](https://github.com/arduino12/pxt_henrykit_basic/workflows/MakeCode/badge.svg)
+## Usage
+### Sonar
+``||init [trig] [echo]||``  
+Initialize the **``sonar``** object, can be called this from **``on start``** and set different pinout.  
+```sig
+henrykit.sonar.init(
+    trig: DigitalPin=DigitalPin.P2,
+    echo: DigitalPin=DigitalPin.P1,
+    maxCmDistance: number=300,
+    updateMs: number=300
+);
+```
+``||distance (cm)||``  
+Read the distance in centimeters.  
+```sig
+henrykit.sonar.distance();
+```
+``||on distance [range] [min] to [max] (cm)||``  
+Do something when the sensor reading match the given range.  
+```sig
+henrykit.onDistanceRange(
+    inOut: InOut=InOut.GotIn,
+    min: number=0,
+    max: number=20,
+    callback: () => void
+);
+```
 
-To edit this repository in MakeCode.
+## Example
+Use the **``plot bar graph``** block to visualize the distance reported by a sonar sensor.
 
-* open [https://makecode.microbit.org/](https://makecode.microbit.org/)
-* click on **Import** then click on **Import URL**
-* paste **https://github.com/arduino12/pxt_henrykit_basic** and click import
+```blocks
+basic.forever(function () {
+    led.plotBarGraph(henrykit.sonar.distance(), 0);
+	basic.pause(300);
+})
+```
 
-## Blocks preview
+## License
+MIT
 
-This image shows the blocks code from the last commit in master.
-This image may take a few minutes to refresh.
-
-![A rendered view of the blocks](https://github.com/arduino12/pxt_henrykit_basic/raw/master/.github/makecode/blocks.png)
+## Enjoy!
+A.E. Tech
 
 #### Metadata (used for search, rendering)
 
