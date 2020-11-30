@@ -1,14 +1,12 @@
 {
     "name": "pxt_henrykit_basic",
-    "description": "",
+    "description": "HenryKit basic extension for MakeCode micro:bit!",
     "dependencies": {
-        "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "core": "*"
     },
     "files": [
-        "main.blocks",
-        "main.ts",
+        "henrykit.ts",
+        "sonar.ts",
         "README.md"
     ],
     "testFiles": [
@@ -17,5 +15,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "blocksprj"
+    "public": true
 }

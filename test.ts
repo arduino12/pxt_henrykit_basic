@@ -1,1 +1,5 @@
-// tests go here; this will not be compiled when this package is used as an extension.
+henrykit.sonar.init()
+basic.forever(function () {
+    basic.pause(1000)
+	serial.writeValue("distance", henrykit.sonar.distance());
+})
