@@ -4,10 +4,10 @@
 //% block="HenryKit" color=#ff7c00 icon="\uf281"
 namespace henrykit {
 	//% fixedInstances
-    export class Servo {
-        private _init: boolean;
-        private _wait: boolean;
-        private _pin: AnalogPin;
+	export class Servo {
+		private _init: boolean;
+		private _wait: boolean;
+		private _pin: AnalogPin;
 		private _angle: number;
 		private _targetAngle: number;
 		private _speed: number;
@@ -57,8 +57,8 @@ namespace henrykit {
 			wait: boolean=false
 		): void {
 			this.init(this._pin);
-            this._targetAngle = angle;
-            pins.servoWritePin(this._pin, angle);
+			this._targetAngle = angle;
+			pins.servoWritePin(this._pin, angle);
 		}
 
 		/**
@@ -71,7 +71,7 @@ namespace henrykit {
 		//% blockId=henrykit_servo_stop
 		stop(hold: boolean=true): void {
 			this.init(this._pin)
-            this._targetAngle = this._angle;
+			this._targetAngle = this._angle;
 			if (!hold) {
 				pins.analogWritePin(this._pin, 0);
 				pins.analogReadPin(this._pin);

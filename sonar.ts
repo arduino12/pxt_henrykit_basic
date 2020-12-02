@@ -4,10 +4,10 @@
 //% block="HenryKit" color=#ff7c00 icon="\uf281"
 namespace henrykit {
 	//% fixedInstances
-    export class Sonar {
-        private _init: boolean;
-        private _trig: DigitalPin;
-        private _echo: DigitalPin;
+	export class Sonar {
+		private _init: boolean;
+		private _trig: DigitalPin;
+		private _echo: DigitalPin;
 		private _maxCmDistance: number;
 
 		constructor() {
@@ -68,18 +68,33 @@ namespace henrykit {
 		 * @param callback code to run when the event is raised
 		 */
 		//% subcategory="Sonar" weight=70
-		//% block="on %this distance (cm)|%inOut|range %min to %max"
+		//% block="on %this $distance (cm) | %inOut | range %min to %max"
 		//% inOut.defl=InOut.GotIn min.defl=0 max.defl=20
 		//% min.min=0 min.max=300 max.min=0 max.max=300
+		//% draggableParameters="reporter"
 		//% blockId=henrykit_sonar_on_distance_range
 		onDistanceRange(
 			inOut: InOut=InOut.GotIn,
 			min: number=0,
 			max: number=20,
-			callback: () => void
+			callback: (distance: number) => void
 		): void {
 			this.init();
-			// TBD...
+			control.inBackground(function () {
+				let inRange = 2;
+				let lastInRange;
+				while (true) {
+					basic.pause(100);
+					let d = this.distance();
+					lastInRange = inRange;
+					inRange = d >= min && d <= max ? 1 : 0;
+					if ((inOut & 1) != inRange)
+						continue;
+					if ((inOut & 2) && (lastInRange & 1) == inRange)
+						continue;
+					callback(d);
+				}
+			})
 		}
 	}
 

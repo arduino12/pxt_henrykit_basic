@@ -4,9 +4,9 @@
 //% block="HenryKit" color=#ff7c00 icon="\uf281"
 namespace henrykit {
 	//% fixedInstances
-    export class Probe {
-        private _init: boolean;
-        private _pin: AnalogPin;
+	export class Probe {
+		private _init: boolean;
+		private _pin: AnalogPin;
 		private _type: ProbeType;
 
 		constructor() {
@@ -43,7 +43,7 @@ namespace henrykit {
 		//% blockId=henrykit_probe_wetness
 		wetness(): number {
 			this.init();
-            return Math.map(pins.analogReadPin(this._pin), 0, 1023, 0, 100);
+			return Math.map(pins.analogReadPin(this._pin), 0, 1023, 0, 100);
 		}
 
 		/**
